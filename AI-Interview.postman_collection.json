@@ -1,0 +1,143 @@
+{
+	"info": {
+		"_postman_id": "a53103a5-6203-4ae4-805c-82a8b02f6f63",
+		"name": "AI-Interview",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "8299176"
+	},
+	"item": [
+		{
+			"name": "Start",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const id = pm.response.json().interviewId;\r",
+							"pm.collectionVariables.set(\"interviewId\", id);\r",
+							"console.log(\"Interview ID saved:\", id);"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"topic\": \"AI in the workplace\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/interviews/start",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"interviews",
+						"start"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Q1",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"answer\": \"I use AI tools daily as a software developer. Mainly ChatGPT for code reviews and GitHub Copilot for autocomplete. It has significantly improved my productivity.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/interviews/{{interviewId}}/answer",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"interviews",
+						"{{interviewId}}",
+						"answer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Q2",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"answer\": \"Biggest challenge is knowing when to trust the AI output. Sometimes it generates plausible but incorrect code, and junior developers might not catch it.\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/interviews/{{interviewId}}/answer",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"interviews",
+						"{{interviewId}}",
+						"answer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Result",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/interviews/{{interviewId}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"interviews",
+						"{{interviewId}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "interviewId",
+			"value": ""
+		}
+	]
+}
